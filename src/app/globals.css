@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 217 89% 61%; /* Google Blue */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 217 89% 61%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 217 89% 61%;
+    --radius: 2rem;
+  }
+
+  .dark {
+    --background: 224 71% 4%; /* Obsidian Dark */
+    --foreground: 210 40% 98%;
+    --card: 224 71% 4%;
+    --card-foreground: 210 40% 98%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 89% 61%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+/* AI Command Center Styles */
+.obsidian-bg {
+  background: radial-gradient(circle at 50% 50%, #0a0c14 0%, #020408 100%);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.glow-pill {
+  @apply rounded-full transition-all duration-300;
+  border: 2px solid rgba(66, 133, 244, 0.3);
+  box-shadow: 0 0 15px rgba(66, 133, 244, 0.2);
+}
+
+.glow-pill:hover {
+  border-color: rgba(66, 133, 244, 0.8);
+  box-shadow: 0 0 25px rgba(66, 133, 244, 0.4);
+}
+
+.google-progress {
+  background: linear-gradient(90deg, #4285F4 0%, #EA4335 33%, #FBBC04 66%, #34A853 100%);
+}
+
+/* Firebase Orbs */
+.orb {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: 0;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.orb-blue { background: #4285F4; animation: float 20s infinite alternate; }
+.orb-purple { background: #818cf8; animation: float 25s infinite alternate-reverse; }
+
+@keyframes float {
+  from { transform: translate(-10%, -10%); }
+  to { transform: translate(10%, 10%); }
+}
+
+/* PDF Global Logic - Google Executive Pitch Deck */
+.pdf-page {
+  width: 816px;
+  height: 1056px;
+  padding: 40px; /* Layout Safety: 40px Safe Zone */
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  background-color: #fff;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.theme-ocean { background: linear-gradient(135deg, #4285F4 0%, #34A853 100%); color: #FFFFFF; }
+.theme-sunset { background: linear-gradient(135deg, #EA4335 0%, #FBBC04 100%); color: #FFFFFF; }
+.theme-royal { background: linear-gradient(135deg, #4285F4 0%, #EA4335 100%); color: #FFFFFF; }
+.theme-emerald { background: linear-gradient(135deg, #34A853 0%, #FBBC04 100%); color: #FFFFFF; }
+.theme-abyss { background: #3C4043; color: #FFFFFF; }
+.theme-minimal { background: #FFFFFF; color: #3C4043; }
+
+.google-card-exec {
+  @apply rounded-[32px] p-8 shadow-lg flex flex-col;
+  min-height: 100px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.scrim-glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  @apply rounded-[32px] p-6;
+}
+
+.scrim-glass-dark {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(16px);
+  @apply rounded-[32px] p-6;
+}
+
+@media print {
+  .pdf-page { margin: 0 !important; box-shadow: none !important; }
+  .no-print { display: none !important; }
+}
